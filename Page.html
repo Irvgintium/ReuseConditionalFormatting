@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>Spreadsheets</title>
+
+<head>
+  <style>
+    .space {
+      width: 4px;
+      height: auto;
+      display: inline-block;
+    }
+  </style>
+  <script>
+    google.script.run.withSuccessHandler(onSuccess).getSheetNames();
+
+    function onSuccess(data) {
+      var select = document.getElementById("selectSheet");
+      var options = data;
+      for(var i = 0; i < options.length; i++) {
+          var opt = options[i];
+          var el = document.createElement("option");
+          el.textContent = opt;
+          el.value = opt;
+          select.appendChild(el);
+      }
+    }
+
+    function passSelectedSheet(){
+      var e = document.getElementById("selectSheet");
+      google.script.run.getSelectedSheet(e.value); //<-- PASS the selected drop-down data to GOOGLE SCRIPT function named getSelectedSheet()
+    }
+          
+  </script>
+</head>
+
+<body>
+  <h3>1. Highlight A Range:</h3>
+  <div>
+    <p><input type="button" value="Extract Conditional Formatting" onclick="google.script.run.checkRangeSelection()">
+    </p>
+  </div>
+
+  <h3>2. Choose A Destination Sheet:</h3>
+  <select id="selectSheet" onclick="passSelectedSheet()">
+    <option>No Selection</option>
+  </select>
+
+  <h3>3. Apply To Destination Sheet Range:</h3>
+  <div>
+    <p><input type="button" value="Apply" onclick=" google.script.run.applyConditionalFormatting()"></p>
+  </div>
+
+  <div>
+    <p><input type="button" value="Close" onclick="google.script.host.close()"></p>
+  </div>
+
+</body>
+
+</html>
