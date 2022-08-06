@@ -3,4 +3,4 @@ This is a simple Google Sheets add-on for extracting/editing any conditional for
 
 For this simple project, I have used Google Apps Script & HTML (for sidebar functionality).
 
-Here' a sample demonstartion at https://imgur.com/a/OWtRV9A
+Here' a sample demonstration at https://imgur.com/a/OWtRV9A
